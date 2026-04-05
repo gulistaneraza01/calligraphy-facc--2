@@ -10,7 +10,7 @@ const translations = {
       gallery: 'Gallery',
       services: 'Services',
       process: 'Process',
-      reviews: 'Reviews',
+      // reviews: 'Reviews',
       contact: 'Contact',
     },
     hero: {

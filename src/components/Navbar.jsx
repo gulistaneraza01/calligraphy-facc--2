@@ -17,7 +17,7 @@ export default function Navbar() {
         "gallery",
         "services",
         "process",
-        "reviews",
+        // "reviews",
         "contact",
       ];
       for (const id of sections) {
@@ -46,7 +46,7 @@ export default function Navbar() {
     { id: "gallery", label: t.nav.gallery },
     { id: "services", label: t.nav.services },
     { id: "process", label: t.nav.process },
-    { id: "reviews", label: t.nav.reviews },
+    // { id: "reviews", label: t.nav.reviews },
     { id: "contact", label: t.nav.contact },
   ];
 
@@ -54,7 +54,11 @@ export default function Navbar() {
     <nav className={`navbar ${scrolled ? "scrolled" : ""}`}>
       <div className="nav-inner">
         <button className="nav-logo" onClick={() => scrollTo("home")}>
-          <img src="/image/logo.png" alt="Arabic Calligraphy Logo" className="logo-img" />
+          <img
+            src="/image/logo.png"
+            alt="Arabic Calligraphy Logo"
+            className="logo-img"
+          />
         </button>
 
         <ul className={`nav-links ${menuOpen ? "open" : ""}`}>

@@ -55,27 +55,11 @@
 .fc-bl { bottom: -1px; left: -1px; border-width: 0 0 2px 2px; }
 .fc-br { bottom: -1px; right: -1px; border-width: 0 2px 2px 0; }
 
-.calligraphy-demo {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 0.5rem;
-}
-
-.demo-text {
-  font-family: var(--font-arabic-display);
-  font-size: 4.5rem;
-  color: var(--gold);
-  line-height: 1;
-  filter: drop-shadow(0 0 20px rgba(201, 168, 76, 0.4));
-}
-
-.demo-sub {
-  font-family: var(--font-english);
-  font-size: 0.85rem;
-  color: var(--cream-muted);
-  letter-spacing: 0.15em;
-  font-style: italic;
+.profile-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
 }
 
 .experience-badge {
