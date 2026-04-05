@@ -1,8 +1,8 @@
-import { useLang } from '../context/LanguageContext'
-import './About.css'
+import { useLang } from "../context/LanguageContext";
+import "./About.css";
 
 export default function About() {
-  const { t } = useLang()
+  const { t } = useLang();
 
   return (
     <section className="about" id="about">
@@ -13,10 +13,7 @@ export default function About() {
             <div className="frame-corner fc-tr" />
             <div className="frame-corner fc-bl" />
             <div className="frame-corner fc-br" />
-            <div className="calligraphy-demo">
-              <span className="demo-text">بِسْمِ اللهِ</span>
-              <span className="demo-sub">Al-Thuluth Script</span>
-            </div>
+            <img src="/image/profile.JPG" alt="Arabic Calligraphy Artist" className="profile-image" />
           </div>
           <div className="experience-badge">
             <span className="badge-num">١٢</span>
@@ -34,8 +31,10 @@ export default function About() {
           <div className="about-tags-group">
             <p className="tags-label">{t.about.stylesLabel}</p>
             <div className="tags">
-              {t.about.styles.map(s => (
-                <span key={s} className="tag">{s}</span>
+              {t.about.styles.map((s) => (
+                <span key={s} className="tag">
+                  {s}
+                </span>
               ))}
             </div>
           </div>
@@ -43,13 +42,15 @@ export default function About() {
           <div className="about-tags-group">
             <p className="tags-label">{t.about.mediumsLabel}</p>
             <div className="tags">
-              {t.about.mediums.map(m => (
-                <span key={m} className="tag tag-outline">{m}</span>
+              {t.about.mediums.map((m) => (
+                <span key={m} className="tag tag-outline">
+                  {m}
+                </span>
               ))}
             </div>
           </div>
         </div>
       </div>
     </section>
-  )
+  );
 }
