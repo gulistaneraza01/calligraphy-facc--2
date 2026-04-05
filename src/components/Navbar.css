@@ -41,6 +41,12 @@
   opacity: 0.8;
 }
 
+.logo-img {
+  max-height: 40px;
+  width: auto;
+  object-fit: contain;
+}
+
 .nav-links {
   display: flex;
   align-items: center;

@@ -54,9 +54,7 @@ export default function Navbar() {
     <nav className={`navbar ${scrolled ? "scrolled" : ""}`}>
       <div className="nav-inner">
         <button className="nav-logo" onClick={() => scrollTo("home")}>
-          <span className="ornament">✦</span>
-          <span className="logo-text">فن الخط</span>
-          <span className="ornament">✦</span>
+          <img src="/image/logo.png" alt="Arabic Calligraphy Logo" className="logo-img" />
         </button>
 
         <ul className={`nav-links ${menuOpen ? "open" : ""}`}>
