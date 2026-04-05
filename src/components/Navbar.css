@@ -37,7 +37,9 @@
   cursor: none;
   transition: opacity 0.3s;
 }
-.nav-logo:hover { opacity: 0.8; }
+.nav-logo:hover {
+  opacity: 0.8;
+}
 
 .nav-links {
   display: flex;
@@ -66,7 +68,7 @@
 }
 
 .nav-link::after {
-  content: '';
+  content: "";
   position: absolute;
   bottom: 4px;
   left: 50%;
@@ -78,9 +80,13 @@
 }
 
 .nav-link:hover,
-.nav-link.active { color: var(--gold); }
+.nav-link.active {
+  color: var(--gold);
+}
 .nav-link:hover::after,
-.nav-link.active::after { width: 60%; }
+.nav-link.active::after {
+  width: 60%;
+}
 
 .nav-right {
   display: flex;
@@ -109,12 +115,16 @@
   border-right: 1px solid rgba(201, 168, 76, 0.15);
   transition: all 0.3s;
 }
-.lang-btn:last-child { border-right: none; }
+.lang-btn:last-child {
+  border-right: none;
+}
 .lang-btn.active {
   background: var(--gold);
   color: var(--ink);
 }
-.lang-btn:hover:not(.active) { color: var(--gold); }
+.lang-btn:hover:not(.active) {
+  color: var(--gold);
+}
 
 .hamburger {
   display: none;
@@ -131,9 +141,15 @@
   background: var(--cream);
   transition: all 0.3s;
 }
-.hamburger.open span:nth-child(1) { transform: rotate(45deg) translate(4.5px, 4.5px); }
-.hamburger.open span:nth-child(2) { opacity: 0; }
-.hamburger.open span:nth-child(3) { transform: rotate(-45deg) translate(4.5px, -4.5px); }
+.hamburger.open span:nth-child(1) {
+  transform: rotate(45deg) translate(4.5px, 4.5px);
+}
+.hamburger.open span:nth-child(2) {
+  opacity: 0;
+}
+.hamburger.open span:nth-child(3) {
+  transform: rotate(-45deg) translate(4.5px, -4.5px);
+}
 
 .mobile-menu {
   display: flex;
@@ -159,8 +175,14 @@
   border: none;
   transition: color 0.3s;
 }
-[dir="rtl"] .mobile-link { font-family: var(--font-arabic-ui); letter-spacing: 0; }
-.mobile-link.active, .mobile-link:hover { color: var(--gold); }
+[dir="rtl"] .mobile-link {
+  font-family: var(--font-arabic-ui);
+  letter-spacing: 0;
+}
+.mobile-link.active,
+.mobile-link:hover {
+  color: var(--gold);
+}
 
 .mobile-langs {
   display: flex;
@@ -177,6 +199,16 @@
 }
 
 @media (max-width: 900px) {
-  .nav-links { display: none; }
-  .hamburger { display: flex; }
+  .nav-links {
+    display: none;
+  }
+  .hamburger {
+    display: flex;
+  }
+}
+
+@media (max-width: 768px) {
+  .hide-on-mobile {
+    display: none !important;
+  }
 }
