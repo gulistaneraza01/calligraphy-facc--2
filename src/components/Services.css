@@ -1,0 +1,127 @@
+.services {
+  padding: 8rem 2rem;
+  background: var(--deep);
+  position: relative;
+}
+
+.services::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--gold), transparent);
+}
+
+.services-inner { max-width: 1200px; margin: 0 auto; }
+
+.services-header {
+  text-align: center;
+  margin-bottom: 4rem;
+}
+
+.services-header .section-subheading { margin: 0 auto; }
+
+.services-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: 1.5rem;
+}
+
+.service-card {
+  position: relative;
+  padding: 2.5rem 2rem;
+  background: var(--surface);
+  border: 1px solid rgba(201, 168, 76, 0.08);
+  transition: all 0.4s ease;
+  overflow: hidden;
+}
+
+.service-card:hover {
+  border-color: rgba(201, 168, 76, 0.3);
+  transform: translateY(-4px);
+}
+
+.service-card:hover .card-glow { opacity: 1; }
+
+.card-glow {
+  position: absolute;
+  bottom: 0; left: 0;
+  right: 0; height: 2px;
+  background: linear-gradient(90deg, transparent, var(--gold), transparent);
+  opacity: 0;
+  transition: opacity 0.4s;
+}
+
+.service-tag {
+  display: inline-block;
+  padding: 3px 10px;
+  background: rgba(201, 168, 76, 0.15);
+  border: 1px solid rgba(201, 168, 76, 0.3);
+  color: var(--gold);
+  font-size: 0.65rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  font-family: var(--font-body);
+  margin-bottom: 1rem;
+}
+
+[dir="rtl"] .service-tag { font-family: var(--font-arabic-ui); letter-spacing: 0; }
+
+.service-icon {
+  font-size: 2.2rem;
+  margin-bottom: 1.25rem;
+  filter: grayscale(0.3);
+  transition: filter 0.3s, transform 0.3s;
+}
+
+.service-card:hover .service-icon { filter: none; transform: scale(1.1); }
+
+.service-name {
+  font-family: var(--font-english);
+  font-size: 1.25rem;
+  font-weight: 400;
+  color: var(--cream);
+  margin-bottom: 0.75rem;
+}
+
+[dir="rtl"] .service-name { font-family: var(--font-arabic-heading); }
+
+.service-desc {
+  font-size: 0.88rem;
+  color: var(--cream-dim);
+  line-height: 1.8;
+  margin-bottom: 1.5rem;
+}
+
+[dir="rtl"] .service-desc { font-family: var(--font-arabic-ui); }
+
+.service-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-top: 1.25rem;
+  border-top: 1px solid rgba(201, 168, 76, 0.1);
+}
+
+.service-price {
+  font-family: var(--font-english);
+  font-size: 1.05rem;
+  color: var(--gold);
+  font-style: italic;
+}
+
+[dir="rtl"] .service-price { font-family: var(--font-arabic-ui); font-style: normal; }
+
+.service-arrow {
+  color: var(--gold);
+  opacity: 0;
+  transform: translateX(-8px);
+  transition: all 0.3s;
+  font-size: 1.2rem;
+}
+
+.service-card:hover .service-arrow { opacity: 1; transform: translateX(0); }
+
+@media (max-width: 768px) {
+  .services-grid { grid-template-columns: 1fr; }
+}
