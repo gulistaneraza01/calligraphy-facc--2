@@ -1,98 +1,210 @@
-import { useState } from 'react'
-import { useLang } from '../context/LanguageContext'
-import './Gallery.css'
+import React, { useState } from "react";
+import { useLang } from "../context/LanguageContext";
+import "./Gallery.css";
 
-const PALETTE = [
-  { bg: '#161616', accent: '#C9A84C' },
-  { bg: '#0D1117', accent: '#6B9FD4' },
-  { bg: '#120D0A', accent: '#C4703E' },
-  { bg: '#0A0D12', accent: '#7BAF8E' },
-  { bg: '#110A16', accent: '#9B6DC9' },
-  { bg: '#0D1210', accent: '#4FAF7B' },
-  { bg: '#16100A', accent: '#E8C97A' },
-  { bg: '#0A1116', accent: '#5FA8D3' },
-]
+const GALLERY_DATA = [
+  {
+    id: 1,
+    arabic: "بِسْمِ اللَّهِ الرَّحْمَنِ الرَّحِيمِ",
+    en: "Bismillah",
+    style: "Thuluth",
+    size: "large",
+    url: "/image/01.jpg",
+  },
+  {
+    id: 2,
+    arabic: "الصَّبْرُ مِفْتَاحُ الْفَرَجِ",
+    en: "Patience is Key",
+    style: "Naskh",
+    size: "small",
+    url: "/image/01.jpg",
+  },
+  {
+    id: 3,
+    arabic: "وَمَا تَوْفِيقِي إِلَّا بِاللَّهِ",
+    en: "Quranic Verse",
+    style: "Naskh",
+    size: "small",
+    url: "/image/01.jpg",
+  },
+  {
+    id: 4,
+    arabic: "الْحُبُّ وَالسَّلَامُ",
+    en: "Love & Peace",
+    style: "Nastaliq",
+    size: "medium",
+    url: "/image/01.jpg",
+  },
+  {
+    id: 5,
+    arabic: "يَا رَبِّ",
+    en: "O Lord",
+    style: "Ruq'ah",
+    size: "medium",
+    url: "/image/01.jpg",
+  },
+  {
+    id: 6,
+    arabic: "أَهْلاً وَسَهْلاً",
+    en: "Welcome",
+    style: "Ruq'ah",
+    size: "large",
+    url: "/image/01.jpg",
+  },
+  {
+    id: 7,
+    arabic: "الْأَمَلُ",
+    en: "Hope",
+    style: "Thuluth",
+    size: "small",
+    url: "/image/01.jpg",
+  },
+  {
+    id: 8,
+    arabic: "نُورٌ عَلَى نُورٍ",
+    en: "Light upon Light",
+    style: "Nastaliq",
+    size: "small",
+    url: "/image/01.jpg",
+  },
+];
 
-export default function Gallery() {
-  const { t } = useLang()
-  const [activeFilter, setActiveFilter] = useState(0)
-  const [lightbox, setLightbox] = useState(null)
+const PALETTES = [
+  { bg: "#1A1200", accent: "#C9A84C" },
+  { bg: "#0A1520", accent: "#7AADCA" },
+  { bg: "#150A20", accent: "#C97AB5" },
+  { bg: "#0A1A10", accent: "#7AC98A" },
+  { bg: "#1A0A0A", accent: "#C97A7A" },
+  { bg: "#151510", accent: "#C9C07A" },
+  { bg: "#0A1518", accent: "#7AC9C0" },
+  { bg: "#18100A", accent: "#C9A07A" },
+];
 
-  const filterLabels = t.gallery.filters
-  const styleKeys = ['All', 'Thuluth', 'Naskh', 'Diwani', 'Kufic', 'Nastaliq']
-  const activeStyleKey = styleKeys[activeFilter]
+const STYLE_FILTERS = ["Thuluth", "Naskh", "Nastaliq", "Ruq'ah"];
 
-  const filtered = activeStyleKey === 'All'
-    ? t.gallery.items
-    : t.gallery.items.filter(i => i.style === activeStyleKey)
+function Gallery({ t }) {
+  const { t: langT } = useLang();
+  const [filter, setFilter] = useState("all");
+  const [lightbox, setLightbox] = useState(null);
+
+  const filtered =
+    filter === "all"
+      ? GALLERY_DATA
+      : GALLERY_DATA.filter((item) => item.style === filter);
 
   return (
     <section className="gallery" id="gallery">
-      <div className="gallery-inner">
+      <div className="gallery-container">
         <div className="gallery-header">
-          <p className="section-label">{t.gallery.sectionLabel}</p>
-          <h2 className="section-heading">{t.gallery.heading}</h2>
-          <p className="section-subheading">{t.gallery.subheading}</p>
+          <div className="section-tag">
+            <span>✦</span> Gallery <span>✦</span>
+          </div>
+          <h2 className="gallery-heading">
+            <span className="gh-en">Calligraphy Works</span>
+            <span className="gh-ar">أجمل الأعمال</span>
+          </h2>
+          <p className="gallery-sub">
+            A collection of handcrafted calligraphy — each stroke a meditation
+          </p>
         </div>
 
         <div className="gallery-filters">
-          {filterLabels.map((label, i) => (
+          <button
+            className={"filter-btn" + (filter === "all" ? " active" : "")}
+            onClick={() => setFilter("all")}
+          >
+            All Works
+          </button>
+          {STYLE_FILTERS.map((s) => (
             <button
-              key={i}
-              className={`filter-btn ${activeFilter === i ? 'active' : ''}`}
-              onClick={() => setActiveFilter(i)}
+              key={s}
+              className={"filter-btn" + (filter === s ? " active" : "")}
+              onClick={() => setFilter(s)}
             >
-              {label}
+              {s}
             </button>
           ))}
         </div>
 
         <div className="gallery-grid">
-          {filtered.map((item, idx) => {
-            const palette = PALETTE[item.id - 1] || PALETTE[0]
+          {filtered.map((item, i) => {
+            const p = PALETTES[item.id % PALETTES.length];
             return (
               <div
                 key={item.id}
-                className="gallery-card"
-                style={{ background: palette.bg }}
-                onClick={() => setLightbox(item)}
+                className={"gallery-card size-" + item.size}
+                style={{
+                  "--card-bg": p.bg,
+                  "--card-accent": p.accent,
+                  animationDelay: i * 0.08 + "s",
+                }}
+                onClick={() => setLightbox({ item, palette: p })}
               >
-                <div className="card-artwork" style={{ '--accent': palette.accent }}>
-                  <span className="card-arabic" style={{ color: palette.accent }}>{item.arabic}</span>
-                  <div className="card-ornament" style={{ borderColor: palette.accent }}>
-                    <div className="card-ornament-inner" style={{ borderColor: palette.accent }} />
+                <div className="card-art">
+                  {item.url && (
+                    <img src={item.url} alt={item.en} className="card-image" />
+                  )}
+                  <div className="card-geo-bg" />
+                  <span className="card-arabic-text">{item.style}</span>
+                  <div className="card-corners">
+                    <span className="cc tl" />
+                    <span className="cc tr" />
+                    <span className="cc bl" />
+                    <span className="cc br" />
                   </div>
                 </div>
                 <div className="card-info">
-                  <p className="card-title">{item.title}</p>
-                  <p className="card-sub">{item.subtitle}</p>
-                  <span className="card-style-tag" style={{ color: palette.accent, borderColor: palette.accent }}>
-                    {item.style}
-                  </span>
-                </div>
-                <div className="card-overlay">
-                  <span className="view-icon">✦ View</span>
+                  {/* <span className="card-title-text">{item.arabic}</span> */}
+                  <span className="card-meta">{item.style}</span>
                 </div>
               </div>
-            )
+            );
           })}
+        </div>
+
+        <div className="gallery-footer">
+          <button className="view-all-btn">View All Arts Work</button>
         </div>
       </div>
 
       {lightbox && (
         <div className="lightbox" onClick={() => setLightbox(null)}>
-          <div className="lightbox-content" onClick={e => e.stopPropagation()}>
-            <button className="lightbox-close" onClick={() => setLightbox(null)}>✕</button>
-            <div className="lightbox-artwork">
-              <span className="lightbox-arabic">{lightbox.arabic}</span>
+          <div
+            className="lightbox-content"
+            onClick={(e) => e.stopPropagation()}
+          >
+            <button
+              className="lightbox-close"
+              onClick={() => setLightbox(null)}
+            >
+              ✕
+            </button>
+            <div
+              className="lightbox-art"
+              style={{
+                background: lightbox.palette.bg,
+                color: lightbox.palette.accent,
+              }}
+            >
+              {lightbox.item.url && (
+                <img
+                  src={lightbox.item.url}
+                  alt={lightbox.item.en}
+                  className="lightbox-image"
+                />
+              )}
+              <span>{lightbox.item.arabic}</span>
             </div>
             <div className="lightbox-info">
-              <p className="lightbox-title">{lightbox.title}</p>
-              <p className="lightbox-sub">{lightbox.subtitle}</p>
+              <h3>{lightbox.item.arabic}</h3>
+              <p>{lightbox.item.en}</p>
+              <span className="lb-style-tag">{lightbox.item.style} Style</span>
             </div>
           </div>
         </div>
       )}
     </section>
-  )
+  );
 }
+
+export default Gallery;
