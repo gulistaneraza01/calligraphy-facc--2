@@ -1,4 +1,4 @@
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import About from "./components/About";
 import Contact from "./components/Contact";
 import Footer from "./components/Footer";
@@ -7,6 +7,7 @@ import Hero from "./components/Hero";
 import Navbar from "./components/Navbar";
 import Process from "./components/Process";
 import Services from "./components/Services";
+import AllArtwork from "./components/AllArtwork";
 import { LanguageProvider } from "./context/LanguageContext";
 
 function AppContent() {
@@ -14,6 +15,7 @@ function AppContent() {
   const followerRef = useRef(null);
   const pos = useRef({ x: 0, y: 0 });
   const followerPos = useRef({ x: 0, y: 0 });
+  const [currentPage, setCurrentPage] = useState("home");
 
   useEffect(() => {
     const onMove = (e) => {
@@ -42,20 +44,30 @@ function AppContent() {
     };
   }, []);
 
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [currentPage]);
+
   return (
     <>
       <div className="cursor" ref={cursorRef} />
       <div className="cursor-follower" ref={followerRef} />
       <Navbar />
-      <main>
-        <Hero />
-        <About />
-        <Gallery />
-        <Services />
-        <Process />
-        {/* <Testimonials /> */}
-        <Contact />
-      </main>
+      {currentPage === "home" ? (
+        <main>
+          <Hero />
+          <About />
+          <Gallery onViewAllClick={() => setCurrentPage("all-artwork")} />
+          <Services />
+          <Process />
+          {/* <Testimonials /> */}
+          <Contact />
+        </main>
+      ) : (
+        <main>
+          <AllArtwork onBackToHome={() => setCurrentPage("home")} />
+        </main>
+      )}
       <Footer />
     </>
   );
