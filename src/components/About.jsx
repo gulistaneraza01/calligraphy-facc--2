@@ -13,10 +13,14 @@ export default function About() {
             <div className="frame-corner fc-tr" />
             <div className="frame-corner fc-bl" />
             <div className="frame-corner fc-br" />
-            <img src="/image/profile.JPG" alt="Arabic Calligraphy Artist" className="profile-image" />
+            <img
+              src="/image/profile.JPG"
+              alt="Arabic Calligraphy Artist"
+              className="profile-image"
+            />
           </div>
           <div className="experience-badge">
-            <span className="badge-num">١٢</span>
+            <span className="badge-num">9+</span>
             <span className="badge-label">{t.about.badge}</span>
           </div>
         </div>

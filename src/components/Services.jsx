@@ -1,8 +1,8 @@
-import { useLang } from '../context/LanguageContext'
-import './Services.css'
+import { useLang } from "../context/LanguageContext";
+import "./Services.css";
 
 export default function Services() {
-  const { t } = useLang()
+  const { t } = useLang();
 
   return (
     <section className="services" id="services">
@@ -16,19 +16,19 @@ export default function Services() {
         <div className="services-grid">
           {t.services.items.map((item, i) => (
             <div key={i} className="service-card">
-              {item.tag && <span className="service-tag">{item.tag}</span>}
+              {/* {item.tag && <span className="service-tag">{item.tag}</span>} */}
               <div className="service-icon">{item.icon}</div>
               <h3 className="service-name">{item.name}</h3>
               <p className="service-desc">{item.desc}</p>
-              <div className="service-footer">
+              {/* <div className="service-footer">
                 <span className="service-price">{item.price}</span>
                 <span className="service-arrow">→</span>
-              </div>
+              </div> */}
               <div className="card-glow" />
             </div>
           ))}
         </div>
       </div>
     </section>
-  )
+  );
 }
