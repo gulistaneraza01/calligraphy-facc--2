@@ -115,7 +115,7 @@ function AllArtwork({ onBackToHome, t = {} }) {
                     <img
                       src={image.url}
                       alt={`Artwork ${image.id}`}
-                      className="card-image"
+                      className="card-image-1"
                       loading="lazy"
                       onError={(e) => {
                         e.target.style.display = "none";
