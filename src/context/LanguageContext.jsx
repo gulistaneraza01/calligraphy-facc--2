@@ -28,7 +28,7 @@ const translations = {
         "A lifelong dedication to the living tradition of Arabic script",
       p1: "I, Faisal Ansari, have dedicated years to learning and practicing this art. My journey has been guided by my teacher Ustaad Mukhtar ahmad Sahib, supported by my parents, my wife, my brothers and friends. It took almost five years of constant practice to master the major Arabic scripts — Thuluth, Naskh, and Nastaliq.",
       p2: "During the day, I worked for my livelihood; at night, I immersed myself in letters, often spending hours perfecting a single curve. Every weekend, I would meet my teacher for lessons — a routine that shaped my artistic discipline and inner peace.",
-      badge: "12 Years of Mastery",
+      badge: "9+ Years of Mastery",
       stylesLabel: "Calligraphy Styles",
       styles: ["Naskh", "Thuluth", "Nastaliq", "Ruq'ah"],
       mediumsLabel: "Mediums",

@@ -9,7 +9,7 @@ const GALLERY_DATA = [
     en: "Bismillah",
     style: "Thuluth",
     size: "large",
-    url: "/image/01.jpg",
+    url: "/image/Thuluth-1.jpg",
   },
   {
     id: 2,
@@ -17,7 +17,7 @@ const GALLERY_DATA = [
     en: "Patience is Key",
     style: "Naskh",
     size: "small",
-    url: "/image/01.jpg",
+    url: "/image/Naskh-1.jpg",
   },
   {
     id: 3,
@@ -25,7 +25,7 @@ const GALLERY_DATA = [
     en: "Quranic Verse",
     style: "Naskh",
     size: "small",
-    url: "/image/01.jpg",
+    url: "/image/Naskh-2.jpg",
   },
   {
     id: 4,
@@ -33,7 +33,7 @@ const GALLERY_DATA = [
     en: "Love & Peace",
     style: "Nastaliq",
     size: "medium",
-    url: "/image/01.jpg",
+    url: "/image/Nastaliq-1.jpg",
   },
   {
     id: 5,
@@ -41,7 +41,7 @@ const GALLERY_DATA = [
     en: "O Lord",
     style: "Ruq'ah",
     size: "medium",
-    url: "/image/01.jpg",
+    url: "/image/ Ruqah-1.jpg",
   },
   {
     id: 6,
@@ -49,7 +49,7 @@ const GALLERY_DATA = [
     en: "Welcome",
     style: "Ruq'ah",
     size: "large",
-    url: "/image/01.jpg",
+    url: "/image/ Ruqah-2.jpg",
   },
   {
     id: 7,
@@ -57,7 +57,7 @@ const GALLERY_DATA = [
     en: "Hope",
     style: "Thuluth",
     size: "small",
-    url: "/image/01.jpg",
+    url: "/image/Thuluth-2.jpg",
   },
   {
     id: 8,
@@ -65,7 +65,7 @@ const GALLERY_DATA = [
     en: "Light upon Light",
     style: "Nastaliq",
     size: "small",
-    url: "/image/01.jpg",
+    url: "/image/Nastaliq-2.jpg",
   },
 ];
 
@@ -138,14 +138,14 @@ function Gallery({ t }) {
                   "--card-accent": p.accent,
                   animationDelay: i * 0.08 + "s",
                 }}
-                onClick={() => setLightbox({ item, palette: p })}
+                // onClick={() => setLightbox({ item, palette: p })}
               >
                 <div className="card-art">
                   {item.url && (
                     <img src={item.url} alt={item.en} className="card-image" />
                   )}
                   <div className="card-geo-bg" />
-                  <span className="card-arabic-text">{item.style}</span>
+                  {/* <span className="card-arabic-text">{item.style}</span> */}
                   <div className="card-corners">
                     <span className="cc tl" />
                     <span className="cc tr" />
