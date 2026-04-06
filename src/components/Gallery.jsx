@@ -82,7 +82,7 @@ const PALETTES = [
 
 const STYLE_FILTERS = ["Thuluth", "Naskh", "Nastaliq", "Ruq'ah"];
 
-function Gallery({ t }) {
+function Gallery({ t, onViewAllClick }) {
   const { t: langT } = useLang();
   const [filter, setFilter] = useState("all");
   const [lightbox, setLightbox] = useState(null);
@@ -163,7 +163,12 @@ function Gallery({ t }) {
         </div>
 
         <div className="gallery-footer">
-          <button className="view-all-btn">View All Arts Work</button>
+          <button 
+            className="view-all-btn"
+            onClick={onViewAllClick}
+          >
+            View All Arts Work
+          </button>
         </div>
       </div>
 
