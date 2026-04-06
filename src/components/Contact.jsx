@@ -1,39 +1,14 @@
-import { useState } from 'react'
-import { useLang } from '../context/LanguageContext'
-import './Contact.css'
+import { useLang } from "../context/LanguageContext";
+import "./Contact.css";
 
 export default function Contact() {
-  const { t } = useLang()
-  const c = t.contact
-  const [form, setForm] = useState({ name: '', email: '', phone: '', project: '', message: '' })
-  const [errors, setErrors] = useState({})
-  const [sent, setSent] = useState(false)
-
-  const validate = () => {
-    const e = {}
-    if (!form.name.trim()) e.name = true
-    if (!form.email.trim() || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(form.email)) e.email = true
-    if (!form.project) e.project = true
-    if (!form.message.trim()) e.message = true
-    return e
-  }
-
-  const submit = (ev) => {
-    ev.preventDefault()
-    const e = validate()
-    if (Object.keys(e).length) { setErrors(e); return }
-    setErrors({})
-    setSent(true)
-  }
-
-  const reset = () => {
-    setForm({ name: '', email: '', phone: '', project: '', message: '' })
-    setSent(false)
-  }
+  const { t } = useLang();
+  const c = t.contact;
 
   return (
     <section className="contact" id="contact">
       <div className="contact-inner">
+        {/* Left Section - Contact Info */}
         <div className="contact-left">
           <p className="section-label">{c.sectionLabel}</p>
           <h2 className="section-heading">{c.heading}</h2>
@@ -42,88 +17,131 @@ export default function Contact() {
           <div className="contact-info">
             <div className="info-item">
               <span className="info-icon">✉</span>
-              <span>hello@artofcalligraphy.com</span>
+              <div className="info-content">
+                <span className="info-label">Email</span>
+                <span>faisalart08@gmail.com</span>
+              </div>
             </div>
             <div className="info-item">
-              <span className="info-icon">◎</span>
-              <span>Worldwide Commissions</span>
+              <span className="info-icon">📱</span>
+              <div className="info-content">
+                <span className="info-label">Phone</span>
+                <span>+91 9880987187</span>
+              </div>
             </div>
             <div className="info-item">
-              <span className="info-icon">◷</span>
-              <span>Reply within 24 hours</span>
+              <span className="info-icon">💬</span>
+              <div className="info-content">
+                <span className="info-label">WhatsApp</span>
+                <span>+91 9880987187</span>
+              </div>
+            </div>
+            <div className="info-item">
+              <span className="info-icon">📍</span>
+              <div className="info-content">
+                <span className="info-label">Address</span>
+                <span>
+                  No. 29/1, 3rd Cross, Old Guddadahall, Mysore Road,
+                  Vinayakanagar, Bangalore-26
+                </span>
+              </div>
             </div>
           </div>
 
-          <div className="contact-arabic-deco">فن الخط</div>
+          <div className="contact-socials">
+            <p className="socials-label">Follow Us</p>
+            <div className="social-links">
+              <a
+                href="https://www.instagram.com/faisal_al_hind"
+                className="social-link"
+                title="Instagram"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="22"
+                  height="22"
+                  viewBox="0 0 24 24"
+                  aria-hidden="true"
+                  className="social-icon"
+                  style={{ verticalAlign: "middle", marginRight: "0.4em" }}
+                >
+                  <rect
+                    width="20"
+                    height="20"
+                    x="2"
+                    y="2"
+                    rx="5"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth="2"
+                  />
+                  <circle
+                    cx="12"
+                    cy="12"
+                    r="5"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth="2"
+                  />
+                  <circle cx="17" cy="7" r="1.1" fill="currentColor" />
+                </svg>
+                Instagram
+              </a>
+              <a
+                href="https://www.facebook.com/share/1DH9hBYwTV/"
+                className="social-link"
+                title="Facebook"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="22"
+                  height="22"
+                  viewBox="0 0 24 24"
+                  aria-hidden="true"
+                  className="social-icon"
+                  style={{ verticalAlign: "middle", marginRight: "0.4em" }}
+                >
+                  <circle
+                    cx="12"
+                    cy="12"
+                    r="10"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth="2"
+                  />
+                  <path
+                    d="M15.36 8.44h-1.49c-.18 0-.37.21-.37.54v1.08h1.81l-.21 1.88h-1.6v5.08h-2.03V11.94H9.61v-1.85h1.06V8.89c0-1.11.8-2.19 2.38-2.19h1.35v1.74z"
+                    fill="currentColor"
+                  />
+                </svg>
+                Facebook
+              </a>
+            </div>
+          </div>
         </div>
 
+        {/* Right Section - Instagram QR */}
         <div className="contact-right">
-          {sent ? (
-            <div className="success-box">
-              <div className="success-icon">✦</div>
-              <h3 className="success-title">{c.successTitle}</h3>
-              <p className="success-msg">{c.successMsg}</p>
-              <button className="btn-gold" onClick={reset}>{c.sendAnother}</button>
+          <div className="qr-section">
+            <p className="qr-label">Follow on Instagram</p>
+            <div className="qr-container">
+              <img
+                src="/image/insta-qr.jpg"
+                alt="Instagram QR Code"
+                className="qr-code"
+              />
             </div>
-          ) : (
-            <form className="contact-form" onSubmit={submit} noValidate>
-              <div className="form-row">
-                <div className={`form-group ${errors.name ? 'error' : ''}`}>
-                  <input
-                    type="text"
-                    placeholder={c.namePlaceholder}
-                    value={form.name}
-                    onChange={e => setForm({ ...form, name: e.target.value })}
-                  />
-                </div>
-                <div className={`form-group ${errors.email ? 'error' : ''}`}>
-                  <input
-                    type="email"
-                    placeholder={c.emailPlaceholder}
-                    value={form.email}
-                    onChange={e => setForm({ ...form, email: e.target.value })}
-                  />
-                </div>
-              </div>
-
-              <div className="form-row">
-                <div className="form-group">
-                  <input
-                    type="tel"
-                    placeholder={c.phonePlaceholder}
-                    value={form.phone}
-                    onChange={e => setForm({ ...form, phone: e.target.value })}
-                  />
-                </div>
-                <div className={`form-group ${errors.project ? 'error' : ''}`}>
-                  <select
-                    value={form.project}
-                    onChange={e => setForm({ ...form, project: e.target.value })}
-                  >
-                    <option value="">{c.projectLabel}</option>
-                    {c.projectTypes.map((pt, i) => (
-                      <option key={i} value={pt}>{pt}</option>
-                    ))}
-                  </select>
-                </div>
-              </div>
-
-              <div className={`form-group ${errors.message ? 'error' : ''}`}>
-                <textarea
-                  placeholder={c.messagePlaceholder}
-                  rows={5}
-                  value={form.message}
-                  onChange={e => setForm({ ...form, message: e.target.value })}
-                />
-              </div>
-
-              <button type="submit" className="btn-gold submit-btn">
-                {c.submit} <span>→</span>
-              </button>
-            </form>
-          )}
+            <p className="qr-text">Scan to follow our work</p>
+            <a href="#" className="instagram-link">
+              @faisla_al_hind
+            </a>
+          </div>
         </div>
       </div>
     </section>
-  )
+  );
 }
